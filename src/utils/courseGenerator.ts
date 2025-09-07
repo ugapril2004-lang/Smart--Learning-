@@ -43,7 +43,9 @@ const youtubeCourseTemplates = [
     notes: [
       {
         title: 'What is Machine Learning?',
-        content: `Machine Learning is a subset of artificial intelligence (AI) that focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy.
+        content: `# What is Machine Learning?
+
+Machine Learning is a subset of artificial intelligence (AI) that focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy.
 
 ## Key Concepts
 
@@ -59,12 +61,21 @@ Machine learning is a method of data analysis that automates analytical model bu
 - Image recognition
 - Natural language processing
 - Recommendation systems
-- Autonomous vehicles`,
+- Autonomous vehicles
+
+## Getting Started
+To begin your machine learning journey:
+1. **Understand the fundamentals** - Learn statistics and linear algebra
+2. **Choose a programming language** - Python or R are popular choices
+3. **Practice with datasets** - Start with clean, well-documented datasets
+4. **Build projects** - Apply your knowledge to real-world problems`,
         duration: '15 min read'
       },
       {
         title: 'Supervised vs Unsupervised Learning',
-        content: `Understanding the fundamental difference between supervised and unsupervised learning approaches.
+        content: `# Supervised vs Unsupervised Learning
+
+Understanding the fundamental difference between supervised and unsupervised learning approaches is crucial for choosing the right algorithm for your problem.
 
 ## Supervised Learning
 
@@ -76,11 +87,18 @@ Supervised learning uses labeled training data to learn a mapping function from 
 
 ## Unsupervised Learning
 
-Unsupervised learning finds hidden patterns or structures in data without labeled examples. The algorithm must find patterns on its own.
+Unsupervised learning finds hidden patterns or structures in data without labeled examples. The algorithm must discover patterns independently.
+
+### Key Characteristics:
+- No target variable or correct answer
+- Explores data to find hidden structures
+- Often used for data exploration and preprocessing
+- Results can be subjective and require domain expertise
 
 ### Examples:
-- Clustering: Customer segmentation
-- Association: Market basket analysis`,
+- **Clustering**: Customer segmentation, gene sequencing
+- **Association**: Market basket analysis, recommendation systems
+- **Dimensionality Reduction**: Data visualization, feature selection`,
         duration: '12 min read'
       }
     ],
@@ -109,20 +127,57 @@ Unsupervised learning finds hidden patterns or structures in data without labele
             ],
             correctAnswer: 2,
             explanation: 'Customer segmentation is clustering, which is an unsupervised learning technique that finds hidden patterns in data.'
+          },
+          {
+            question: 'What type of learning uses rewards and penalties to improve performance?',
+            options: [
+              'Supervised learning',
+              'Unsupervised learning',
+              'Reinforcement learning',
+              'Semi-supervised learning'
+            ],
+            correctAnswer: 2,
+            explanation: 'Reinforcement learning uses a reward system where the algorithm learns through trial and error, receiving rewards for good actions and penalties for bad ones.'
+          },
+          {
+            question: 'Which algorithm is commonly used for classification problems?',
+            options: [
+              'K-means clustering',
+              'Decision trees',
+              'Principal Component Analysis',
+              'Association rules'
+            ],
+            correctAnswer: 1,
+            explanation: 'Decision trees are widely used for classification problems as they can handle both categorical and numerical data effectively.'
           }
         ]
       }
     ],
     flashcards: [
       {
-        question: 'What is the main goal of supervised learning?',
-        answer: 'To learn a mapping function from input variables to output variables using labeled training data.',
+        question: 'What is supervised learning?',
+        answer: 'A type of machine learning that uses labeled training data to learn a mapping function from input variables to output variables. Examples include classification and regression.',
         category: 'Fundamentals'
       },
       {
-        question: 'Name three types of machine learning.',
-        answer: 'Supervised learning, Unsupervised learning, and Reinforcement learning.',
+        question: 'What are the three main types of machine learning?',
+        answer: '1. Supervised Learning (uses labeled data), 2. Unsupervised Learning (finds patterns in unlabeled data), 3. Reinforcement Learning (learns through rewards and penalties).',
         category: 'Types'
+      },
+      {
+        question: 'What is overfitting in machine learning?',
+        answer: 'When a model learns the training data too well, including noise and outliers, resulting in poor performance on new, unseen data.',
+        category: 'Concepts'
+      },
+      {
+        question: 'What is the difference between classification and regression?',
+        answer: 'Classification predicts discrete categories or classes (e.g., spam/not spam), while regression predicts continuous numerical values (e.g., house prices).',
+        category: 'Problem Types'
+      },
+      {
+        question: 'What is cross-validation?',
+        answer: 'A technique to assess how well a machine learning model will generalize to new data by splitting the dataset into multiple folds for training and testing.',
+        category: 'Evaluation'
       }
     ]
   },
@@ -135,46 +190,83 @@ Unsupervised learning finds hidden patterns or structures in data without labele
     notes: [
       {
         title: 'React Fundamentals',
-        content: `React is a JavaScript library for building user interfaces, particularly web applications. It was developed by Facebook and is now maintained by Meta and the open-source community.
+        content: `# React Fundamentals
+
+React is a powerful JavaScript library for building user interfaces, particularly web applications. It was developed by Facebook and is now maintained by Meta and the open-source community.
 
 ## Core Concepts
 
 ### Components
-React applications are built using components - reusable pieces of UI that can manage their own state and lifecycle.
+React applications are built using **components** - reusable pieces of UI that can manage their own state and lifecycle. Think of components as custom HTML elements that you can create and reuse throughout your application.
+
+#### Types of Components:
+- **Functional Components**: Simple functions that return JSX
+- **Class Components**: ES6 classes with additional features (legacy approach)
 
 ### JSX
-JSX is a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript.
+JSX (JavaScript XML) is a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. It makes React code more readable and intuitive.
+
+```jsx
+const Welcome = () => {
+  return <h1>Hello, World!</h1>;
+};
+```
 
 ### Virtual DOM
-React uses a virtual DOM to efficiently update the actual DOM by comparing changes and updating only what's necessary.
+React uses a **Virtual DOM** - a JavaScript representation of the actual DOM. This allows React to:
+- Compare changes efficiently (diffing)
+- Update only what's necessary (reconciliation)
+- Improve performance significantly
 
 ### Props and State
-- **Props**: Data passed from parent to child components
-- **State**: Internal data that components can manage and update`,
+- **Props**: Data passed from parent to child components (read-only)
+- **State**: Internal data that components can manage and update
+
+## Component Lifecycle
+Understanding when components mount, update, and unmount is crucial for effective React development.`,
         duration: '18 min read'
       },
       {
         title: 'React Hooks Deep Dive',
-        content: `Hooks are functions that let you use state and other React features in functional components.
+        content: `# React Hooks Deep Dive
+
+Hooks are functions that let you use state and other React features in functional components. They were introduced in React 16.8 and have revolutionized how we write React applications.
 
 ## Essential Hooks
 
 ### useState
-Manages local component state in functional components.
+Manages local component state in functional components. It returns an array with the current state value and a function to update it.
+
+```jsx
+const [count, setCount] = useState(0);
+```
 
 ### useEffect
-Handles side effects like API calls, subscriptions, and DOM manipulation.
+Handles side effects like API calls, subscriptions, and DOM manipulation. It combines componentDidMount, componentDidUpdate, and componentWillUnmount.
+
+```jsx
+useEffect(() => {
+  // Side effect code
+  return () => {
+    // Cleanup code
+  };
+}, [dependencies]);
+```
 
 ### useContext
-Consumes context values without nesting.
+Consumes context values without prop drilling. Perfect for sharing data across multiple components.
+
+### useReducer
+An alternative to useState for complex state logic. Similar to Redux reducers.
 
 ### Custom Hooks
-Create reusable stateful logic that can be shared across components.
+Create reusable stateful logic that can be shared across components. Custom hooks must start with "use".
 
 ## Best Practices
-- Only call hooks at the top level
-- Use dependency arrays properly in useEffect
-- Extract complex logic into custom hooks`,
+1. **Only call hooks at the top level** - Never inside loops, conditions, or nested functions
+2. **Use dependency arrays properly** in useEffect to avoid infinite loops
+3. **Extract complex logic into custom hooks** for reusability
+4. **Use useCallback and useMemo** for performance optimization when needed`,
         duration: '22 min read'
       }
     ],
@@ -203,20 +295,57 @@ Create reusable stateful logic that can be shared across components.
             ],
             correctAnswer: 2,
             explanation: 'useState is the hook used for managing local component state in functional components.'
+          },
+          {
+            question: 'What does the Virtual DOM provide?',
+            options: [
+              'Direct DOM manipulation',
+              'Efficient updates through diffing and reconciliation',
+              'Server-side rendering',
+              'Component styling'
+            ],
+            correctAnswer: 1,
+            explanation: 'The Virtual DOM allows React to efficiently update the actual DOM by comparing changes and updating only what\'s necessary.'
+          },
+          {
+            question: 'When should you use useEffect?',
+            options: [
+              'Only for API calls',
+              'For side effects like API calls, subscriptions, and DOM manipulation',
+              'Only for component styling',
+              'Only for state management'
+            ],
+            correctAnswer: 1,
+            explanation: 'useEffect is used for side effects including API calls, subscriptions, DOM manipulation, and cleanup operations.'
           }
         ]
       }
     ],
     flashcards: [
       {
-        question: 'What is the Virtual DOM?',
-        answer: 'A JavaScript representation of the actual DOM that React uses to efficiently update the UI by comparing changes.',
+        question: 'What is the Virtual DOM and why is it important?',
+        answer: 'A JavaScript representation of the actual DOM that React uses to efficiently update the UI. It enables React to compare changes (diffing) and update only what\'s necessary (reconciliation), improving performance.',
         category: 'Core Concepts'
       },
       {
-        question: 'What are React Hooks?',
-        answer: 'Functions that let you use state and other React features in functional components.',
+        question: 'What are React Hooks and what problem do they solve?',
+        answer: 'Functions that let you use state and other React features in functional components. They solve the problem of sharing stateful logic between components and eliminate the need for class components in most cases.',
         category: 'Hooks'
+      },
+      {
+        question: 'What is the difference between props and state?',
+        answer: 'Props are read-only data passed from parent to child components, while state is internal data that a component can manage and update. Props flow down, state is local.',
+        category: 'Core Concepts'
+      },
+      {
+        question: 'What are the rules of hooks?',
+        answer: '1. Only call hooks at the top level (not inside loops, conditions, or nested functions). 2. Only call hooks from React functions (components or custom hooks).',
+        category: 'Hooks'
+      },
+      {
+        question: 'What is JSX and why do we use it?',
+        answer: 'JSX is a syntax extension for JavaScript that allows writing HTML-like code within JavaScript. It makes React code more readable and intuitive while providing the full power of JavaScript.',
+        category: 'Syntax'
       }
     ]
   },
@@ -594,57 +723,188 @@ export const generateCourseFromPdf = (file: File): GeneratedCourse => {
       notes: [
         {
           title: 'JavaScript Fundamentals from PDF',
-          content: `# JavaScript Core Concepts
+        content: `# JavaScript Core Concepts
 
 Based on the content from "${file.name}", here are the key JavaScript concepts covered:
 
 ## Variables and Data Types
 JavaScript supports various data types including:
-- **Primitive types**: string, number, boolean, undefined, null, symbol
-- **Reference types**: objects, arrays, functions
+
+### Primitive Types:
+- **String**: Text data enclosed in quotes
+- **Number**: Integers and floating-point numbers
+- **Boolean**: true or false values
+- **Undefined**: Variable declared but not assigned
+- **Null**: Intentional absence of value
+- **Symbol**: Unique identifiers (ES6+)
+- **BigInt**: Large integers (ES2020+)
+
+### Reference Types:
+- **Objects**: Collections of key-value pairs
+- **Arrays**: Ordered lists of values
+- **Functions**: Reusable blocks of code
+
+## Variable Declarations
+```javascript
+// ES6+ preferred methods
+const name = "John"; // Cannot be reassigned
+let age = 25;        // Can be reassigned
+var city = "NYC";    // Function-scoped (avoid in modern JS)
+```
 
 ## Functions and Scope
-- Function declarations vs expressions
-- Arrow functions and their behavior
-- Lexical scoping and closures
-- The 'this' keyword context
+
+### Function Types:
+```javascript
+// Function Declaration
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+
+// Function Expression
+const greet = function(name) {
+  return \`Hello, \${name}!\`;
+};
+
+// Arrow Function
+const greet = (name) => \`Hello, \${name}!\`;
+```
+
+### Scope Chain:
+- **Global Scope**: Variables accessible everywhere
+- **Function Scope**: Variables accessible within function
+- **Block Scope**: Variables accessible within block (let/const)
+- **Lexical Scoping**: Inner functions have access to outer scope
 
 ## Modern JavaScript Features
-- Template literals for string interpolation
-- Destructuring assignment
-- Spread and rest operators
-- Async/await for handling promises
+
+### Template Literals:
+```javascript
+const message = \`Hello, \${name}! You are \${age} years old.\`;
+```
+
+### Destructuring:
+```javascript
+// Array destructuring
+const [first, second] = [1, 2, 3];
+
+// Object destructuring
+const {name, age} = person;
+```
+
+### Spread and Rest:
+```javascript
+// Spread operator
+const newArray = [...oldArray, newItem];
+
+// Rest parameters
+function sum(...numbers) {
+  return numbers.reduce((a, b) => a + b, 0);
+}
+```
 
 ## Best Practices
-- Use const and let instead of var
-- Implement proper error handling
-- Follow consistent naming conventions
-- Write modular, reusable code`,
+1. **Use const and let instead of var** for better scoping
+2. **Implement proper error handling** with try/catch blocks
+3. **Follow consistent naming conventions** (camelCase for variables)
+4. **Write modular, reusable code** using functions and modules
+5. **Use strict mode** to catch common mistakes
+6. **Avoid global variables** to prevent naming conflicts`,
           duration: '20 min read'
         },
         {
           title: 'Advanced JavaScript Patterns',
-          content: `# Advanced Programming Patterns
+          content: `# Advanced JavaScript Programming Patterns
 
 ## Object-Oriented Programming
-- Classes and inheritance
-- Prototypal inheritance
-- Encapsulation and data privacy
+
+### ES6 Classes:
+```javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  
+  speak() {
+    console.log(\`\${this.name} makes a sound\`);
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(\`\${this.name} barks\`);
+  }
+}
+```
+
+### Prototypal Inheritance:
+JavaScript uses prototype-based inheritance where objects can inherit directly from other objects.
+
+### Encapsulation:
+Use closures or private fields (#) to create data privacy.
 
 ## Functional Programming
-- Higher-order functions
-- Map, filter, and reduce operations
-- Pure functions and immutability
+
+### Higher-Order Functions:
+Functions that take other functions as arguments or return functions.
+
+### Array Methods:
+```javascript
+// Map: Transform each element
+const doubled = numbers.map(n => n * 2);
+
+// Filter: Select elements that meet criteria
+const evens = numbers.filter(n => n % 2 === 0);
+
+// Reduce: Combine elements into single value
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+```
+
+### Pure Functions:
+- Same input always produces same output
+- No side effects
+- Easier to test and reason about
 
 ## Asynchronous Programming
-- Promises and promise chaining
-- Async/await syntax
-- Error handling in async code
+
+### Promises:
+```javascript
+fetch('/api/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+### Async/Await:
+```javascript
+async function fetchData() {
+  try {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+```
 
 ## Module Systems
-- ES6 modules (import/export)
-- CommonJS modules
-- Module bundling concepts`,
+
+### ES6 Modules:
+```javascript
+// Export
+export const PI = 3.14159;
+export default function calculate() { }
+
+// Import
+import calculate, { PI } from './math.js';
+```
+
+### Module Benefits:
+- Code organization and reusability
+- Namespace management
+- Dependency management
+- Tree shaking for smaller bundles`,
           duration: '25 min read'
         }
       ],
@@ -684,20 +944,57 @@ JavaScript supports various data types including:
               ],
               correctAnswer: 1,
               explanation: 'A closure is a function that has access to variables in its outer (enclosing) scope even after the outer function has returned.'
+            },
+            {
+              question: 'What is the difference between == and === in JavaScript?',
+              options: [
+                'No difference, they work the same',
+                '== compares type, === compares value',
+                '== performs type coercion, === does not',
+                '=== is faster than =='
+              ],
+              correctAnswer: 2,
+              explanation: '== performs type coercion before comparison, while === compares both value and type without coercion (strict equality).'
+            },
+            {
+              question: 'What is hoisting in JavaScript?',
+              options: [
+                'Moving code to the server',
+                'Variable and function declarations are moved to the top of their scope',
+                'Optimizing code performance',
+                'Creating global variables'
+              ],
+              correctAnswer: 1,
+              explanation: 'Hoisting is JavaScript\'s behavior of moving variable and function declarations to the top of their scope during compilation.'
             }
           ]
         }
       ],
       flashcards: [
         {
-          question: 'What is hoisting in JavaScript?',
-          answer: 'Hoisting is JavaScript\'s behavior of moving variable and function declarations to the top of their scope during compilation.',
+          question: 'What is hoisting in JavaScript and how does it work?',
+          answer: 'Hoisting is JavaScript\'s behavior of moving variable and function declarations to the top of their scope during compilation. Variables declared with var are hoisted and initialized with undefined, while let/const are hoisted but not initialized.',
           category: 'Core Concepts'
         },
         {
-          question: 'What is the difference between == and === in JavaScript?',
-          answer: '== performs type coercion before comparison, while === compares both value and type without coercion.',
+          question: 'Explain the difference between == and === in JavaScript',
+          answer: '== (loose equality) performs type coercion before comparison, while === (strict equality) compares both value and type without coercion. Always prefer === for predictable comparisons.',
           category: 'Operators'
+        },
+        {
+          question: 'What is a closure and provide a practical example?',
+          answer: 'A closure is a function that has access to variables in its outer scope even after the outer function returns. Example: function counter() { let count = 0; return () => ++count; } - the returned function maintains access to count.',
+          category: 'Advanced Concepts'
+        },
+        {
+          question: 'What are the different ways to declare functions in JavaScript?',
+          answer: '1. Function Declaration: function name() {} 2. Function Expression: const name = function() {} 3. Arrow Function: const name = () => {} Each has different hoisting behavior and this binding.',
+          category: 'Functions'
+        },
+        {
+          question: 'What is the event loop in JavaScript?',
+          answer: 'The event loop is JavaScript\'s concurrency model that handles asynchronous operations. It continuously checks the call stack and task queue, moving tasks from queue to stack when stack is empty.',
+          category: 'Asynchronous'
         }
       ]
     };
